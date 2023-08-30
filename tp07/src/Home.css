@@ -1,0 +1,44 @@
+/* Home.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 4px;
+    width: 300px;
+    text-align: left;
+  }
+  
+  .card h2 {
+    font-size: 18px;
+    margin: 0;
+
+  }
+  
+  .card p {
+    color: #777;
+  }
+ .card a{
+    text-decoration: none;
+    color: black;
+  }
+
+
+.link:hover {
+  text-decoration: underline; /* Agrega subraya cuando se pasa el cursor sobre el enlace */
+}

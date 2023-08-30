@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import '../index.css';
+import './index.css';
 
 const Layout = () => {
   // el tag link es como el tag a, pero para react-router-dom, el to es como el href
@@ -16,6 +16,9 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/estadisticas">Estadisticas</Link>
+          </li>
+          <li>
+            <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
       </nav>
