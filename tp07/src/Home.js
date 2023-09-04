@@ -17,6 +17,9 @@ export default function Home() {
   return (
     <div className="container">
       <h1>Personas</h1>
+      <div>
+      <Link to={`/estadisticas`}>AAAAAAAAA</Link>
+      </div>
       <div className="card-container">
         {Personas.map((persona) => (
           <div className="card" key={persona.id} onClick={() => handleClick(persona)}>
