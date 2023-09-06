@@ -24,7 +24,7 @@ export default function Home() {
         {Personas.map((persona) => (
           <div className="card" key={persona.id} onClick={() => handleClick(persona)}>
             <h2>
-              <Link to={`/persona/${persona.id}`}>
+              <Link className="personaName" to={`/persona/${persona.id}`}>
                 {persona.nombre + " "} 
                 {persona.apellido}
               </Link>

@@ -30,6 +30,12 @@
 
   }
   
+  .personaName:hover{
+
+    opacity: 65%;
+
+  }
+
   .card p {
     color: #777;
   }

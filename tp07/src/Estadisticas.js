@@ -1,52 +1,49 @@
-
-import ReactDOM from "react-dom/client";
-import {  Text } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Personas from "./listaPersonas.js";
-import { useEffect, useState } from "react";
-
 
 export default function Estadisticas() {
-  let [MenorEdad, setMenorEdad] = useState(Infinity);
-  let [MayorEdad, setMayorEdad] = useState(-Infinity);
-  let [MenorNombres, setMenorNombres] = useState([]);
-  let [MayorNombres, setMayorNombres] = useState([]);
-  let [Cont, setCont] = useState(0);
-  useEffect(() =>{
-    Personas.forEach(persona => {
-    if(persona.edad > 35){
-      setCont(Cont++);
-    }
-    if(persona.edad < MenorEdad){
-      setMenorEdad(persona.edad);
-      console.log(MenorEdad)
-      setMenorNombres([persona.nombre])
-    }
-    else if(persona.edad === MenorEdad){
-      setMenorNombres(prevMenorNombres => [...prevMenorNombres, " " + persona.nombre])
-    }
-    if(persona.edad > MayorEdad){
-      setMayorEdad(persona.edad);
-      setMayorNombres([persona.nombre])
-    }
-    else if(persona.edad === MayorEdad){
-      setMayorNombres(prevMayorNombres => [...prevMayorNombres, " " + persona.nombre])
-    }
-  });
+  const [MenorEdad, setMenorEdad] = useState(Infinity);
+  const [MayorEdad, setMayorEdad] = useState(-Infinity);
+  const [MenorNombres, setMenorNombres] = useState([]);
+  const [MayorNombres, setMayorNombres] = useState([]);
+  const [Cont, setCont] = useState(0);
 
+  useEffect(() => {
+    const personasMayoresDe35 = Personas.filter((persona) => persona.edad > 35);
+
+    setCont(personasMayoresDe35.length);
+
+    const edades = personasMayoresDe35.map((persona) => persona.edad);
+
+    const menor = edades.reduce((min, edad) => (edad < min ? edad : min), Infinity);
+    const mayor = edades.reduce((max, edad) => (edad > max ? edad : max), -Infinity);
+
+    setMenorEdad(menor);
+    setMayorEdad(mayor);
+
+    const nombresMenor = personasMayoresDe35
+      .filter((persona) => persona.edad === menor)
+      .map((persona) => persona.nombre);
+
+    setMenorNombres(nombresMenor);
+
+    const nombresMayor = personasMayoresDe35
+      .filter((persona) => persona.edad === mayor)
+      .map((persona) => persona.nombre);
+
+    setMayorNombres(nombresMayor);
   }, []);
- 
 
   return (
     <>
-        <h1>estadisticas Page</h1>
-        <div>
-            <h2>{MayorEdad}</h2>
-            <h2>{MayorNombres}</h2>
-            <h2>{MenorEdad}</h2>
-            <h2>{MenorNombres}</h2>
-            <h2>{Cont}</h2>
-        </div>
+      <h1>Estadísticas Page</h1>
+      <div>
+        <h2>Mayor Edad: {MayorEdad}</h2>
+        <h2>Personas de Mayor Edad: {MayorNombres.join(", ")}</h2>
+        <h2>Menor Edad: {MenorEdad}</h2>
+        <h2>Personas de Menor Edad: {MenorNombres.join(", ")}</h2>
+        <h2>Hay {Cont} personas mayores de 35 años</h2>
+      </div>
     </>
   );
 }
-
