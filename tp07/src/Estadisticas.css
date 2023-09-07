@@ -1,0 +1,37 @@
+ table {
+     width: 90%;
+     margin: 20px auto;
+     border-collapse: collapse;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+
+ thead th,
+ tbody td {
+     text-align: center;
+     border: 1px solid #ddd;
+ }
+
+ /* Estilos para los títulos de las columnas */
+ th {
+     background-color: #f2f2f2;
+     font-weight: bold;
+ }
+
+ /* Estilos para las filas impares */
+ tbody tr:nth-child(odd) {
+     background-color: #f9f9f9;
+ }
+
+ /* Estilos para el encabezado principal */
+ h1 {
+     text-align: center;
+     margin-top: 20px;
+     font-size: 24px;
+ }
+
+ /* Estilos para el contenedor general */
+ body {
+     font-family: Arial, sans-serif;
+
+
+ }
